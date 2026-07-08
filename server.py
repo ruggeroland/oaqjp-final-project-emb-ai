@@ -1,15 +1,16 @@
-"""Flask server for the emotion detection web application."""
+"""Flask web application for emotion detection."""
 
 from flask import Flask, render_template, request
 
-from EmotionDetection.emotion_detection import emotion_detector
+from EmotionDetection import emotion_detector
+
 
 app = Flask("Emotion Detector")
 
 
 @app.route("/emotionDetector")
-def detect_emotion():
-    """Return emotion analysis result for submitted text."""
+def emotion_detector_route():
+    """Return formatted emotion detection result."""
     text_to_analyze = request.args.get("textToAnalyze")
     response = emotion_detector(text_to_analyze)
 
